@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Login</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #e5ddd5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-box {
+        background: white;
+        width: 350px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 28px;
+        color: #25D366;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #25D366;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1ebe5d;
+    }
+
+    .error {
+        color: red;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .success {
+        color: green;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <div class="logo">WhatsApp</div>
+
+    <input type="text" id="phone" placeholder="Enter Phone Number">
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+function login() {
+    let phone = document.getElementById("phone").value;
+    let password = document.getElementById("password").value;
+    let message = document.getElementById("message");
+
+    if(phone === "" || password === "") {
+        message.innerHTML = "<div class='error'>Please fill all fields</div>";
+        return;
+    }
+
+    if(phone.length !== 10 || isNaN(phone)) {
+        message.innerHTML = "<div class='error'>Enter valid 10-digit phone number</div>";
+        return;
+    }
+
+    if(password.length < 6) {
+        message.innerHTML = "<div class='error'>Password must be at least 6 characters</div>";
+        return;
+    }
+
+    message.innerHTML = "<div class='success'>Login Successful (Demo Only)</div>";
+}
+</script>
+
+</body>
+</html>
